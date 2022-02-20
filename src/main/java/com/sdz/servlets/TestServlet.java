@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sdz.javabean.Coyote;
+
 /**
  * Servlet implementation class TestServlet2
  */
@@ -27,8 +29,22 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		//this.getServletContext().getRequestDispatcher("/WEB-INF/TestJsp.jsp").forward(request, response);
+		
+		// création et initialisation du message
+		String paramAuteur = request.getParameter("auteur");
+		String message = "Transmission de message : OK!" + paramAuteur;
+		
+		// création et initialisation du bean
+		Coyote coyote = new Coyote();
+		coyote.setNom("Bip bip");
+		coyote.setPrenom("Runner");
+		
+		// stockage des informations
+		request.setAttribute("texte", message);
+		request.setAttribute("bean", coyote);
+		
 		request.getRequestDispatcher("/WEB-INF/TestJsp.jsp").forward(request, response);
 	}
 
