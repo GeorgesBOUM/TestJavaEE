@@ -8,6 +8,6 @@
 </head>
 <body>
 	<p>Ceci est notre première jsp</p>
-	<p>Un autre paragraphe de test</p>
+	<p>Affichage à travers l'objet request</p>
 </body>
 </html>
